@@ -5,7 +5,7 @@ int main() {
     // Variáveis
     int pontosT1, pontosT2;
     unsigned long int popu1, popu2;
-    float area1, area2, densip1, densip2, superPoder1, superPoder2;
+    float area1, area2, densip1, densip2;
     double pib1, pib2, pibpc1, pibpc2;
     char estado1, estado2, cidade1[20], cidade2[20], cod1[4], cod2[4];
 
@@ -77,13 +77,6 @@ int main() {
     pibpc1 = (pib1  / popu1) * 1000000000.0; // PIB em bilhões de reais
     //Carta 2
     pibpc2 = (pib2  / popu2) * 1000000000.0; // PIB em bilhões de reais
-
-    // Calculando o Super Poder (opcional, não foi solicitado, mas incluído para completar a lógica)
-
-    // Carta 1
-    superPoder1 = popu1 + area1 + pib1 + pontosT1 + pibpc1 + (1 / densip1); 
-    // Carta 2
-    superPoder2 = popu2 + area2 + pib2 + pontosT2 + pibpc2 + (1 / densip2);
     
     // Saída Carta 1
     printf("\n=== Informações da Carta 1 ===\n");
@@ -92,7 +85,6 @@ int main() {
     printf("População: %lu \nPIB: %.2f bilhões de reais \nNúmero de Pontos Turísticos: %d\n", popu1, pib1, pontosT1);
     printf("Densidade Populacional: %.2f hab/km²\n", densip1);
     printf("PIB per Capita: %.2f Reais\n", pibpc1);
-    printf("Super Poder: %.2f\n", superPoder1);
     
     // Saída Carta 2
     printf("\n=== Informações da Carta 2 ===\n");
@@ -101,17 +93,24 @@ int main() {
     printf("População: %lu \nPIB: %.2f bilhões de reais \nNúmero de Pontos Turísticos: %d\n", popu2, pib2, pontosT2);
     printf("Densidade Populacional: %.2f hab/km²\n", densip2);
     printf("PIB per Capita: %.2f Reais\n", pibpc2);
-    printf("Super Poder: %.2f\n", superPoder2);
 
-    // Comparação das Cartas
-    printf("\n=== Comparação das Cartas ===\n");
-    printf("Comparando as Cartas: \n");
-    printf("População: Carta 1 venceu: %d\n", popu1 > popu2);
-    printf("Área: Carta 1 venceu: %d\n", area1 > area2);
-    printf("PIB: Carta 1 venceu: %d\n", pib1 > pib2);
-    printf("Densidade Populacional: Carta 1 venceu: %d\n", densip1 > densip2);
-    printf("PIB per Capita: Carta 1 venceu: %d\n", pibpc1 > pibpc2);
-    printf("Super Poder: Carta 1 venceu: %d\n", superPoder1 > superPoder2);
-    
+
+     // Lógica de comparação
+    printf("\n=== Comparação das Cartas (Atributo: Área) ===\n");
+
+    if (area1 > area2) {
+
+        printf("A Carta 1 (%s) venceu!\n", cidade1);
+
+    } else if (area1 < area2) {
+
+        printf("A Carta 2 (%s) venceu!\n", cidade2);
+
+    } else {
+
+        printf("Empate!\n");
+        
+    }
+
 return 0;
 }
